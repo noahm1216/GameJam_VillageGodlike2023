@@ -13,8 +13,7 @@ public class BillboardForce : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.LookAt(mainCam.transform);
-        transform.Rotate(0, 180, 0);
+        transform.rotation = mainCam.transform.rotation;
     }
 
 }//end of billboard force

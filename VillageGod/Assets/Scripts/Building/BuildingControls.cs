@@ -29,6 +29,9 @@ public class BuildingControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if is busy return; ??
+
+
         if (hasBuilding)
         {
             //----------------------------------------------------------Raycast
