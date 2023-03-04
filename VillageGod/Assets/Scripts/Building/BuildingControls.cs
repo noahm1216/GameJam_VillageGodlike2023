@@ -13,7 +13,7 @@ public class BuildingControls : MonoBehaviour
 
     //get the mask to raycast against either the player or BuildingGround layer
     //int layer_maskHittable = LayerMask.GetMask("Player", "BuildingGround");
-    int layer_maskHittable;
+    public LayerMask layer_maskHittable;
 
     public bool hasBuilding;
     public float offset = 20;
@@ -22,8 +22,6 @@ public class BuildingControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //get layer mask
-        layer_maskHittable = LayerMask.NameToLayer("BuildingGround");
         //zero out vector 3
         buildingPlacement = Vector3.zero;
 
@@ -40,7 +38,7 @@ public class BuildingControls : MonoBehaviour
             //----------------------------------------------------------Raycast
             Ray ray = camMain.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100)) //layer_maskHittable))
+            if (Physics.Raycast(ray, out hit, 100, layer_maskHittable))
             {
                 Debug.Log(hit.transform.name);
                 Debug.Log("hit");
@@ -48,6 +46,7 @@ public class BuildingControls : MonoBehaviour
             }
             else
             {
+                Debug.Log("not hit");
                 buildingPlacement = Vector3.zero;
             }
 

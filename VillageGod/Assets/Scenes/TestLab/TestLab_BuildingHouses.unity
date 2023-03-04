@@ -505,6 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camMain: {fileID: 963194227}
+  layer_maskHittable:
+    serializedVersion: 2
+    m_Bits: 64
   hasBuilding: 1
   offset: 20
   buildingPlacement: {x: 0, y: 0, z: 0}
