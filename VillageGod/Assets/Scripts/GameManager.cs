@@ -5,6 +5,8 @@ using UnityEngine;
 public enum InstanceType
 {
 	None,
+	Tree,
+	Log,
 	Character
 };
 
@@ -16,7 +18,7 @@ public class GameManager : MonoBehaviour
 	//private Vector3 DebugRayPoint;
 
 	public InstanceType CurrentlySelectedType = InstanceType.None;
-	public GameObject CurrentlySelectedObject = null;
+	public InteractableInstance CurrentlySelectedObject = null;
 
 	public GameObject RingIndicator;
 	public Transform ThreeDUIRef;
@@ -54,8 +56,18 @@ public class GameManager : MonoBehaviour
 			{
 				if (CurrentlySelectedType == InstanceType.Character)
 				{
-					Instantiate(ArrowIndicatorPrefab, hit.point, Quaternion.identity, ThreeDUIRef);
-					CurrentlySelectedObject.GetComponent<NPC_Controller>().MoveToPoint(hit.point);
+					if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+					{
+						Instantiate(ArrowIndicatorPrefab, hit.point, Quaternion.identity, ThreeDUIRef);
+						CurrentlySelectedObject.GetComponent<NPC_Controller>().MoveToPoint(hit.point);
+					}
+					else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+					{
+						Instantiate(ArrowIndicatorPrefab, hit.point, Quaternion.identity, ThreeDUIRef);
+						CurrentlySelectedObject.GetComponent<NPC_Controller>().Target = hit.collider.gameObject.GetComponent<InteractableInstance>();
+						CurrentlySelectedObject.GetComponent<NPC_Controller>().TargetType = hit.collider.gameObject.GetComponent<InteractableInstance>().Type;
+						CurrentlySelectedObject.GetComponent<NPC_Controller>().DecideWhatToDoNext();
+					}
 				}
 			}
 		}
@@ -66,7 +78,7 @@ public class GameManager : MonoBehaviour
 		if (g.layer == LayerMask.NameToLayer("Character"))
 		{
 			CurrentlySelectedType = InstanceType.Character;
-			CurrentlySelectedObject = g;
+			CurrentlySelectedObject = g.GetComponent<InteractableInstance>();
 		}
 		else if (g.layer == LayerMask.NameToLayer("Ground"))
 		{
