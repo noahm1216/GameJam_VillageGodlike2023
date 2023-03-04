@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ce5190ceb7995064594f3ad079ec6bcc
+guid: 3af1b467659568b4ea86b166e2e21dac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -114,7 +114,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Char_BBao_Front_Stand1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 1325
+        width: 394
+        height: 672
+      alignment: 9
+      pivot: {x: 0.49267825, y: 0.02492723}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc78a40a2fc0fd45b073d2eb1c6fe40
+      internalID: -838854792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Front_Walk1
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1307
+        width: 398
+        height: 701
+      alignment: 9
+      pivot: {x: 0.5024161, y: 0.011658846}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b770abc016681504aafd0644abab074a
+      internalID: -47109306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Side_Stand1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 616
+        width: 394
+        height: 666
+      alignment: 9
+      pivot: {x: 0.4885281, y: 0.011359687}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7bf6691e7bdcfd45b24dc4065990a95
+      internalID: -1623756315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Side_Walk1
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 628
+        width: 396
+        height: 655
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0.0073393146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980f83564406e0549abbee4743b39c97
+      internalID: 1360473456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Side_Walk2
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 622
+        width: 391
+        height: 662
+      alignment: 9
+      pivot: {x: 0.502369, y: 0.0032616928}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8114b6659c4819e4eb9e74895301e35b
+      internalID: 1661060754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -125,7 +230,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Char_BBao_Front_Stand1: -838854792
+      Char_BBao_Front_Walk1: -47109306
+      Char_BBao_Side_Stand1: -1623756315
+      Char_BBao_Side_Walk1: 1360473456
+      Char_BBao_Side_Walk2: 1661060754
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
