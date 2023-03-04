@@ -10,21 +10,20 @@ using UnityEngine;
 public class BuildingControls : MonoBehaviour
 {
     [SerializeField] private Camera camMain;
+    [SerializeField] private Vector3 placementOffset;
+    [SerializeField] private bool hasBuilding;
+    [SerializeField] private Vector3 buildingPlacement;
 
-    //get the mask to raycast against either the player or BuildingGround layer
-    //int layer_maskHittable = LayerMask.GetMask("Player", "BuildingGround");
     public LayerMask layer_maskHittable;
 
-    public bool hasBuilding;
-    public float offset = 20;
-    public Vector3 buildingPlacement;
+    private GameObject objToPlace;
+    private BuildingIdentity scrpt_BuildId;
 
     // Start is called before the first frame update
     void Start()
     {
         //zero out vector 3
         buildingPlacement = Vector3.zero;
-
     }//end start
 
     // Update is called once per frame
@@ -32,9 +31,6 @@ public class BuildingControls : MonoBehaviour
     {
         if (hasBuilding)
         {
-            Debug.Log("have building");
-
-
             //----------------------------------------------------------Raycast
             Ray ray = camMain.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -43,6 +39,27 @@ public class BuildingControls : MonoBehaviour
                 Debug.Log(hit.transform.name);
                 Debug.Log("hit");
                 buildingPlacement = hit.point;
+
+                //left mouse click
+                if (Input.GetMouseButtonDown(0))
+                {
+                    //if touching another object
+                    if (scrpt_BuildId.isTouchingAnother)
+                    {
+                        print("cant place here");
+                    }
+                    else//not touching another obj
+                    {
+                        print("Place Building");
+                        //place it and reset
+                        objToPlace.transform.SetParent(null); // we will want to set the parent to a consistent obj
+                        scrpt_BuildId.PlaceBuilding();
+                        scrpt_BuildId = null;
+                        objToPlace = null;
+                        hasBuilding = false;
+                    }
+                    
+                }//end of left mouse click
             }
             else
             {
@@ -53,17 +70,33 @@ public class BuildingControls : MonoBehaviour
             //---------------------------------------------Mouse Position 3D
             if(buildingPlacement != Vector3.zero)
             {
-                transform.position = buildingPlacement;
-                //Vector3 mousePos = Input.mousePosition;
-                //mousePos.z = camMain.nearClipPlane + offset;
-                //Vector3 Worldpos = camMain.ScreenToWorldPoint(mousePos);
-                //transform.position = Worldpos;
+                transform.position = buildingPlacement;// + placementOffset;
             }
             
-        }
+        }//end of has building
        
     }//end update
 
 
+    //a function to spawn a building (mostly through UI buttons with a prefab reference)
+    public void SpawnBuilding(GameObject _building)
+    {
+        //if no building assigned
+        if (_building == null) { print("no asset to spawn"); return; }
+
+        //if has a building
+        if (hasBuilding) { print("have a building already... deleted"); Destroy(objToPlace, 0); hasBuilding = false; }
+
+        //on click }nstantiate
+        GameObject clone_buildingPrefab = Instantiate(_building, _building.transform);
+        clone_buildingPrefab.transform.SetParent(this.transform);
+        clone_buildingPrefab.transform.localPosition = Vector3.zero;
+        objToPlace = clone_buildingPrefab;
+        //script ref
+        scrpt_BuildId = objToPlace.transform.GetComponent<BuildingIdentity>();
+        scrpt_BuildId.isBeingPlaced = true;
+        hasBuilding = true;
+
+    }//end of spawn building
 
 }//end of building controls
