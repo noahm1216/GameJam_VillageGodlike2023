@@ -6,9 +6,10 @@ public class BillboardForce : MonoBehaviour
 {
     [SerializeField] private Camera mainCam;
 
-    void Start()
+    void OnEnable()
     {
-        mainCam = Camera.main;
+        if (mainCam == null)
+            mainCam = Camera.main;
     }
 
     void LateUpdate()
