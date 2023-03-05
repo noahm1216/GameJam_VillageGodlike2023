@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum InstanceType
 {
@@ -12,6 +13,8 @@ public enum InstanceType
 
 public class GameManager : MonoBehaviour
 {
+	public static GameManager instance;
+
 	// Start is called before the first frame update
 	public LayerMask Playable;
 
@@ -23,6 +26,17 @@ public class GameManager : MonoBehaviour
 	public GameObject RingIndicator;
 	public Transform ThreeDUIRef;
 	public GameObject ArrowIndicatorPrefab;
+
+	public Unity.AI.Navigation.NavMeshSurface NMS;
+
+	private void Awake()
+	{
+		if (instance)
+		{
+			Destroy(this.gameObject);
+		}
+		instance = this;
+	}
 
 	void Start()
     {
@@ -82,9 +96,19 @@ public class GameManager : MonoBehaviour
 		}
 		else if (g.layer == LayerMask.NameToLayer("Ground"))
 		{
-			CurrentlySelectedType = InstanceType.None;
-			CurrentlySelectedObject = null;
+			Deselect();
 		}
+	}
+
+	public void Deselect()
+	{
+		CurrentlySelectedType = InstanceType.None;
+		CurrentlySelectedObject = null;
+	}
+
+	public void RecalculateNav()
+	{
+		NMS.BuildNavMesh();
 	}
 
 	private void OnDrawGizmos()

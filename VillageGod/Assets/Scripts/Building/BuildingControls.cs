@@ -100,6 +100,9 @@ public class BuildingControls : MonoBehaviour
         scrpt_BuildId.isBeingPlaced = true;
         hasBuilding = true;
 
+        //Deselect character
+        GameManager.instance.Deselect();
+
     }//end of spawn building
 
 }//end of building controls

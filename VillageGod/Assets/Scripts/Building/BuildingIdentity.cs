@@ -99,6 +99,7 @@ public class BuildingIdentity : MonoBehaviour
         transform.GetComponent<Collider>().isTrigger = false;
 
         // UPDATE NAVMESH HERE IF REASONABLE || OR RIGIDBODY
+        GameManager.instance.RecalculateNav();
 
     }//end of place building
 
