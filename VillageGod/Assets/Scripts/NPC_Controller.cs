@@ -14,15 +14,15 @@ public class NPC_Controller : InteractableInstance
 {
 
     public float InteractionRange = 0.5f;
-
+    
+    [Header("Parameter")]
     public CharacterState State = CharacterState.Idle;
-
-    private NavMeshAgent agent;
-
     public InteractableInstance Target = null;
     public InstanceType TargetType = InstanceType.None;
 
-
+    [Header("Component Reference")]
+    public Animator animator;
+    private NavMeshAgent agent;
 
     void Start()
     {
@@ -32,6 +32,8 @@ public class NPC_Controller : InteractableInstance
     // Update is called once per frame
     void Update()
     {
+        UpdateAnimation();
+
         if (State == CharacterState.Moving)
         {
             if (!agent.pathPending)
@@ -54,6 +56,14 @@ public class NPC_Controller : InteractableInstance
             DecideWhatToDoNext();
         }
     }
+
+
+    public void UpdateAnimation()
+    {
+        if (State == CharacterState.Moving) animator.SetBool("Moving", true);
+        else animator.SetBool("Moving", false);
+    }
+
 
     public void MoveToPoint(Vector3 WorldPos)
     {
