@@ -119,10 +119,10 @@ TextureImporter:
       name: Char_BBao_Front_Stand1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 1325
+        x: 22
+        y: 1426
         width: 394
-        height: 672
+        height: 616
       alignment: 9
       pivot: {x: 0.49267825, y: 0.02492723}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: Char_BBao_Front_Walk1
       rect:
         serializedVersion: 2
-        x: 524
-        y: 1307
-        width: 398
-        height: 701
+        x: 438
+        y: 1406
+        width: 376
+        height: 642
       alignment: 9
       pivot: {x: 0.5024161, y: 0.011658846}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: Char_BBao_Side_Stand1
       rect:
         serializedVersion: 2
-        x: 81
-        y: 616
+        x: 14
+        y: 770
         width: 394
-        height: 666
+        height: 616
       alignment: 9
       pivot: {x: 0.4885281, y: 0.011359687}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: Char_BBao_Side_Walk1
       rect:
         serializedVersion: 2
-        x: 548
-        y: 628
+        x: 443
+        y: 780
         width: 396
-        height: 655
+        height: 605
       alignment: 9
       pivot: {x: 0.49999985, y: 0.0073393146}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Char_BBao_Side_Walk2
       rect:
         serializedVersion: 2
-        x: 992
-        y: 622
+        x: 856
+        y: 776
         width: 391
-        height: 662
+        height: 610
       alignment: 9
       pivot: {x: 0.502369, y: 0.0032616928}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,12 +224,12 @@ TextureImporter:
       name: Character_BunBao_HEAD
       rect:
         serializedVersion: 2
-        x: 84
-        y: 1635
+        x: 22
+        y: 1710
         width: 392
-        height: 371
+        height: 338
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,6 +237,90 @@ TextureImporter:
       bones: []
       spriteID: a1b4034147f29af4fa1018e5c21cf390
       internalID: 1241135841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Front_Walk2
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1398
+        width: 372
+        height: 650
+      alignment: 9
+      pivot: {x: 0.4940612, y: 0.02755465}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4395a3fd8b7eacf48bad32ae4266dd84
+      internalID: 1802341856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Back_Walk2
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 88
+        width: 373
+        height: 639
+      alignment: 9
+      pivot: {x: 0.49677545, y: 0.01816554}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87d7a31427b3e704995261319c82b2bc
+      internalID: -528002314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Back_Walk1
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 92
+        width: 370
+        height: 637
+      alignment: 9
+      pivot: {x: 0.5, y: 0.0072121136}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c58ffbca4c9e052488ebfd52c680d27b
+      internalID: -1870236756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Char_BBao_Back_Stand1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 107
+        width: 369
+        height: 620
+      alignment: 9
+      pivot: {x: 0.49432224, y: 0.025954464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b03f18496ecfda344a94577417c82d17
+      internalID: 1453376972
       vertices: []
       indices: 
       edges: []
@@ -253,7 +337,11 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Char_BBao_Front_Stand1: -838854792
+      Char_BBao_Back_Walk2: -528002314
+      Char_BBao_Back_Walk1: -1870236756
       Char_BBao_Front_Walk1: -47109306
+      Char_BBao_Front_Walk2: 1802341856
+      Char_BBao_Back_Stand1: 1453376972
       Character_BunBao_HEAD: 1241135841
       Char_BBao_Side_Stand1: -1623756315
       Char_BBao_Side_Walk1: 1360473456
