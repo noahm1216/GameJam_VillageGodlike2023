@@ -68,6 +68,7 @@ public class NPC_Controller : InteractableInstance
             v3d = Quaternion.AngleAxis(-45, new Vector3(0, 1, 0)) * v3d;
             //Debug.Log("After"+v);
             Vector2 v2d = new Vector2(v3d.z, v3d.x * -1);
+            //Debug.Log(v2d);
             float up, down, left, right;
             if (v2d.x < 0)
             {
@@ -81,12 +82,12 @@ public class NPC_Controller : InteractableInstance
             }
             if (v2d.y < 0)
             {
-                down = Mathf.Abs(v2d.x);
+                down = Mathf.Abs(v2d.y);
                 up = 0;
             }
             else
             {
-                up = v2d.x;
+                up = v2d.y;
                 down = 0;
             }
             float max = Mathf.Max(up, down, left, right);
