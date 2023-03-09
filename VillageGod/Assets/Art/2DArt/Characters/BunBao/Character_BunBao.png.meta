@@ -220,6 +220,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Character_BunBao_HEAD
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1635
+        width: 392
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1b4034147f29af4fa1018e5c21cf390
+      internalID: 1241135841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -233,6 +254,7 @@ TextureImporter:
     nameFileIdTable:
       Char_BBao_Front_Stand1: -838854792
       Char_BBao_Front_Walk1: -47109306
+      Character_BunBao_HEAD: 1241135841
       Char_BBao_Side_Stand1: -1623756315
       Char_BBao_Side_Walk1: 1360473456
       Char_BBao_Side_Walk2: 1661060754
