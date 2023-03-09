@@ -60,7 +60,53 @@ public class NPC_Controller : InteractableInstance
 
     public void UpdateAnimation()
     {
-        if (State == CharacterState.Moving) animator.SetBool("Moving", true);
+        if (State == CharacterState.Moving)
+        {
+            animator.SetBool("Moving", true);
+            Vector3 v3d = agent.velocity;
+            //Debug.Log("Before"+v);
+            v3d = Quaternion.AngleAxis(-45, new Vector3(0, 1, 0)) * v3d;
+            //Debug.Log("After"+v);
+            Vector2 v2d = new Vector2(v3d.z, v3d.x * -1);
+            float up, down, left, right;
+            if (v2d.x < 0)
+            {
+                left = Mathf.Abs(v2d.x);
+                right = 0;
+            }
+            else 
+            {
+                right = v2d.x;
+                left = 0;
+            }
+            if (v2d.y < 0)
+            {
+                down = Mathf.Abs(v2d.x);
+                up = 0;
+            }
+            else
+            {
+                up = v2d.x;
+                down = 0;
+            }
+            float max = Mathf.Max(up, down, left, right);
+            if (max == up)
+            {
+                animator.SetInteger("MovingDirection", 1);
+            }
+            else if (max == down)
+            {
+                animator.SetInteger("MovingDirection", 3);
+            }
+            else if (max == left)
+            {
+                animator.SetInteger("MovingDirection", 4);
+            }
+            else if (max == right)
+            {
+                animator.SetInteger("MovingDirection", 2);
+            }
+        }
         else animator.SetBool("Moving", false);
     }
 
