@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class BuildingControls : MonoBehaviour
 {
+    [SerializeField] private BuildingResources scrpt_BR;
     [SerializeField] private Camera camMain;
     [SerializeField] private Vector3 placementOffset;
     [SerializeField] private bool hasBuilding;
@@ -22,6 +23,10 @@ public class BuildingControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if no ref throw log
+        if (scrpt_BR == null)
+            Debug.Log("MISSING REF: " + transform.name + " - has no reference to 'Building Resources' script");
+
         //zero out vector 3
         buildingPlacement = Vector3.zero;
     }//end start
@@ -84,24 +89,52 @@ public class BuildingControls : MonoBehaviour
     //a function to spawn a building (mostly through UI buttons with a prefab reference)
     public void SpawnBuilding(GameObject _building)
     {
+
         //if no building assigned
         if (_building == null) { print("no asset to spawn"); return; }
 
         //if has a building
         if (hasBuilding) { print("have a building already... deleted"); Destroy(objToPlace, 0); hasBuilding = false; }
 
-        //on click }nstantiate
-        GameObject clone_buildingPrefab = Instantiate(_building, _building.transform);
-        clone_buildingPrefab.transform.SetParent(this.transform);
-        clone_buildingPrefab.transform.localPosition = Vector3.zero;
-        objToPlace = clone_buildingPrefab;
-        //script ref
-        scrpt_BuildId = objToPlace.transform.GetComponent<BuildingIdentity>();
-        scrpt_BuildId.isBeingPlaced = true;
-        hasBuilding = true;
+        //if no ref to resources throw log
+        if (scrpt_BR == null)
+        {
+            Debug.Log("MISSING REF: " + transform.name + " - has no reference to 'Building Resources' script");
+        }
+        else // else we do have a ref and can subtract resources
+        {
+            // this is inefficient but works for now
+            // check for the prefab name and request resources manually ... sorry jingyu or whoever looks at this in the future
+            switch (_building.name)
+            {
+                case "B_ResourceHut":
+                    if (scrpt_BR.ResourceRequest(3, 0, 0) == 0) { return; };
+                    break;
+                case "B_LivingHut":
+                    if (scrpt_BR.ResourceRequest(3, 0, 0) == 0) { return; };
+                    break;
+                case "B_FarmWheat":
+                    if (scrpt_BR.ResourceRequest(3, 0, 0) == 0) { return; };
+                    break;
+                default:
+                    Debug.Log("PREFAB: " + _building.name + " - HAS NO MANUAL RESOURCE REF ... Please check: " + transform.name);
+                    break;
+            }//end of switch check resource request
 
-        //Deselect character
-        GameManager.instance.Deselect();
+            //on click }nstantiate
+            GameObject clone_buildingPrefab = Instantiate(_building, _building.transform);
+            clone_buildingPrefab.transform.SetParent(this.transform);
+            clone_buildingPrefab.transform.localPosition = Vector3.zero;
+            objToPlace = clone_buildingPrefab;
+            //script ref
+            scrpt_BuildId = objToPlace.transform.GetComponent<BuildingIdentity>();
+            scrpt_BuildId.isBeingPlaced = true;
+            hasBuilding = true;
+
+            //Deselect character
+            GameManager.instance.Deselect();
+
+        }//end of DO have ref to resource script
 
     }//end of spawn building
 
